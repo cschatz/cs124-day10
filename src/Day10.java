@@ -73,21 +73,44 @@ public class Day10 {
 		moneyHelper(new ArrayList<Integer>(), total, coins);
 	}
 	
+	private static void sHelper(String sofar, String remaining) {
+		// Base case (solution is ready!)
+		if (remaining.isEmpty()) {
+			// Print the solution
+			System.out.println(sofar);
+			return;
+		}
+		
+		// Recursive steps
+		
+		// Pull one character out of remaining
+		// (arbitrarily choose character #0)
+		char current = remaining.charAt(0);
+		
+		// Two recursive calls:
+		// (a) include current
+		sHelper(sofar + current, remaining.substring(1));
+		// (b) exclude current
+		sHelper(sofar, remaining.substring(1));
+	}
 	
 	public static void subsets(String s) {
-		
+		// spawn the first copy of sHelper
+		sHelper("", s);
 	}
 	
 	public static void main(String[] args) {
 		// permutations("ABCD");
 		
-		ArrayList<Integer> mycoins = new ArrayList<Integer>();
-		mycoins.add(1);
-		mycoins.add(2);
-		mycoins.add(2);
-		mycoins.add(5);
-		mycoins.add(7);
-		moneyChanging(10, mycoins);
+//		ArrayList<Integer> mycoins = new ArrayList<Integer>();
+//		mycoins.add(1);
+//		mycoins.add(2);
+//		mycoins.add(2);
+//		mycoins.add(5);
+//		mycoins.add(7);
+//		moneyChanging(10, mycoins);
+		
+		subsets("ABCD");
 	}
 
 }
