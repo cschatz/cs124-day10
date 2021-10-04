@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Day10 {
+	
+	public static void permutations(String s) {
+		// spawn the first copy of pHelper
+		pHelper("", s);
+	}
 
 	private static void pHelper(String sofar, String remaining) {
 		// Base case (solution is ready!)
@@ -27,11 +32,9 @@ public class Day10 {
 		
 	}
 	
-	public static void permutations(String s) {
-		// spawn the first copy of pHelper
-		pHelper("", s);
+	public static void moneyChanging(int total, ArrayList<Integer> coins) {
+		moneyHelper(new ArrayList<Integer>(), total, coins);
 	}
-	
 	
 	private static void moneyHelper(ArrayList<Integer> sofar, int remainingTotal, 
 												ArrayList<Integer> remainingCoins) {
@@ -69,8 +72,10 @@ public class Day10 {
 		
 	}
 
-	public static void moneyChanging(int total, ArrayList<Integer> coins) {
-		moneyHelper(new ArrayList<Integer>(), total, coins);
+
+	public static void subsets(String s) {
+		// spawn the first copy of sHelper
+		sHelper("", s);
 	}
 	
 	private static void sHelper(String sofar, String remaining) {
@@ -94,13 +99,25 @@ public class Day10 {
 		sHelper(sofar, remaining.substring(1));
 	}
 	
-	public static void subsets(String s) {
-		// spawn the first copy of sHelper
-		sHelper("", s);
+
+	
+	public static void formableSums(ArrayList<Integer> coins) {
+		// TO DO:
+		// Adapt the *SUBSETS* pattern to print print all sums that are formable from
+		// any subset of the given list of coins.
+		
+		// Note: The only code that goes here is one call to formableSumsHelper()!
+		// All other code goes inside formableSumsHelper.
+	}
+	
+	private static void formableSumsHelper(int sofar, ArrayList<Integer> remaining) {
+		
+		
+		
 	}
 	
 	public static void main(String[] args) {
-		// permutations("ABCD");
+//		permutations("ABCD");
 		
 //		ArrayList<Integer> mycoins = new ArrayList<Integer>();
 //		mycoins.add(1);
@@ -110,7 +127,11 @@ public class Day10 {
 //		mycoins.add(7);
 //		moneyChanging(10, mycoins);
 		
-		subsets("ABCD");
+//		subsets("ABCD");
+		
+		ArrayList<Integer> mycoins2 = new ArrayList<Integer>(Arrays.asList(1, 2, 5, 10));
+		formableSums(mycoins2);
+		
 	}
 
 }
