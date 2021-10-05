@@ -132,11 +132,33 @@ public class Day10 {
 	}
 	
 	public static void formableTeams(ArrayList<String> people) {
-		
+		// spawn the first copy of the helper
+		formableTeamsHelper(new ArrayList<String>(), people);
 	}
 	
 	private static void formableTeamsHelper(ArrayList<String> sofar, ArrayList<String> remaining) {
+		// base case: no more "ingredients" (remaining) left to work with!
+		if (remaining.isEmpty()) {
+			// print the solution!
+			System.out.println("Here's a possible team:");
+			for (String s : sofar) {
+				System.out.println("  " + s);
+			}
+			return;
+		}
 		
+		// get element #0
+		String current = remaining.get(0);
+		
+		ArrayList<String> nextRemaining = new ArrayList<String>(remaining);
+		nextRemaining.remove(0);
+		ArrayList<String> nextSoFar = new ArrayList<String>(sofar);
+		sofar.add(current);
+		
+		// (a) include current
+		formableTeamsHelper(nextSoFar, nextRemaining);
+		// (b) exclude current
+		formableTeamsHelper(sofar, nextRemaining);
 	}
 	
 	
@@ -154,8 +176,13 @@ public class Day10 {
 		
 //		subsets("ABCD");
 		
-		ArrayList<Integer> mycoins2 = new ArrayList<Integer>(Arrays.asList(1, 2, 5, 10));
-		formableSums(mycoins2);
+//		ArrayList<Integer> mycoins2 = new ArrayList<Integer>(Arrays.asList(1, 2, 5, 10));
+//		formableSums(mycoins2);
+		
+		ArrayList<String> league
+			= new ArrayList<String>(Arrays.asList("Alicia", "Beatriz", "Christine",
+												"Declain", "Eve"));
+		formableTeams(league);
 		
 	}
 
