@@ -102,17 +102,32 @@ public class Day10 {
 
 	
 	public static void formableSums(ArrayList<Integer> coins) {
-		// TO DO:
-		// Adapt the *SUBSETS* pattern to print print all sums that are formable from
-		// any subset of the given list of coins.
-		
-		// Note: The only code that goes here is one call to formableSumsHelper()!
-		// All other code goes inside formableSumsHelper.
+		// spawn the first copy of the helper
+		formableSumsHelper(0, coins);
 	}
 	
 	private static void formableSumsHelper(int sofar, ArrayList<Integer> remaining) {
+		// base case: no more "ingredients" (remaining) left to work with
+		if (remaining.isEmpty()) {
+			// Print the solution
+			System.out.println(sofar);
+			return;
+		}
 		
+		// Recursive steps
 		
+		// Pull one coin out of remaining
+		// (arbitrarily choose item #0)
+		int current = remaining.get(0);
+		
+		ArrayList<Integer> nextRemaining = new ArrayList<Integer>(remaining);
+		nextRemaining.remove(0);
+		
+		// Two recursive calls:
+		// (a) include current
+		formableSumsHelper(sofar + current, nextRemaining);
+		// (b) exclude current
+		formableSumsHelper(sofar, nextRemaining);
 		
 	}
 	
