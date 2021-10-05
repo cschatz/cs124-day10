@@ -131,18 +131,21 @@ public class Day10 {
 		
 	}
 	
-	public static void formableTeams(ArrayList<String> people) {
+	public static void formableTeams(ArrayList<String> people, int minSize) {
 		// spawn the first copy of the helper
-		formableTeamsHelper(new ArrayList<String>(), people);
+		formableTeamsHelper(new ArrayList<String>(), people, minSize);
 	}
 	
-	private static void formableTeamsHelper(ArrayList<String> sofar, ArrayList<String> remaining) {
+	private static void formableTeamsHelper(ArrayList<String> sofar, 
+											ArrayList<String> remaining, int minSize) {
 		// base case: no more "ingredients" (remaining) left to work with!
 		if (remaining.isEmpty()) {
-			// print the solution!
-			System.out.println("Here's a possible team:");
-			for (String s : sofar) {
-				System.out.println("  " + s);
+			// check the size, if it's ok, print it
+			if (sofar.size() >= minSize) {
+				System.out.println("Here's a possible team:");
+				for (String s : sofar) {
+					System.out.println("  " + s);
+				}
 			}
 			return;
 		}
@@ -156,9 +159,9 @@ public class Day10 {
 		sofar.add(current);
 		
 		// (a) include current
-		formableTeamsHelper(nextSoFar, nextRemaining);
+		formableTeamsHelper(nextSoFar, nextRemaining, minSize);
 		// (b) exclude current
-		formableTeamsHelper(sofar, nextRemaining);
+		formableTeamsHelper(sofar, nextRemaining, minSize);
 	}
 	
 	
@@ -182,7 +185,7 @@ public class Day10 {
 		ArrayList<String> league
 			= new ArrayList<String>(Arrays.asList("Alicia", "Beatriz", "Christine",
 												"Declain", "Eve"));
-		formableTeams(league);
+		formableTeams(league, 4);
 		
 	}
 
