@@ -112,8 +112,8 @@ public class Day10 {
 			// Print the solution
 			System.out.println(sofar);
 			return;
-		}
-		
+		} 
+	
 		// Recursive steps
 		
 		// Pull one coin out of remaining
@@ -130,6 +130,16 @@ public class Day10 {
 		formableSumsHelper(sofar, nextRemaining);
 		
 	}
+	
+	public static void formableTeams(ArrayList<String> people) {
+		
+	}
+	
+	private static void formableTeams(ArrayList<String> sofar, ArrayList<String> remaining) {
+		
+	}
+	
+	
 	
 	public static void main(String[] args) {
 //		permutations("ABCD");
